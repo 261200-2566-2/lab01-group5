@@ -1,17 +1,42 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome!");
+        int[] arr = getArrayMember(getArraySize());
+        printArray(arr);
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        System.out.print("Sorting Array.....\n");
+        Arrays.sort(arr);
+        System.out.print("Completed");
+        printArray(arr);
+    }
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+    public static int getArraySize(){
+        int n;
+        while(true){
+            Scanner s = new Scanner(System.in);
+            System.out.print("Enter array size: ");
+            n = s.nextInt();
+
+            if(n>0) break;
+            else    System.out.print("\n .......Invalid number please enter your array size again \n\n");
         }
+        return n;
+    }
+    public static int[] getArrayMember(int n){
+        int[] arr = new int[n];
+        System.out.print("Enter array member(s): \n");
+        for(int i=0;i<n;i++){
+            Scanner s = new Scanner(System.in);
+            System.out.print((i+1)+". ");
+            arr[i] = s.nextInt();
+        }
+        return arr;
+    }
+    public static void printArray(int[] arr){
+        System.out.print("\n\nShow array\n");
+        for (int j : arr) System.out.print("\n" + j);
+        System.out.print("\n\n------------------------\n\n");
     }
 }
